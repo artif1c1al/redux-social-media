@@ -15,6 +15,20 @@ const initialState = [
       rocket: 0,
       eyes: 0,
     },
+    comments: [
+      {
+        title: 'You my favorite author',
+        comment: 'Nice Post. I like it',
+      },
+      {
+        title: 'You my favorite author',
+        comment: 'Nice Post. I like it',
+      },
+      {
+        title: 'You my favorite author',
+        comment: 'Nice Post. I like it',
+      },
+    ],
   },
   {
     id: '2',
@@ -29,6 +43,20 @@ const initialState = [
       rocket: 0,
       eyes: 0,
     },
+    comments: [
+      {
+        title: 'You my favorite author',
+        comment: 'Nice Post. I like it',
+      },
+      {
+        title: 'You my favorite author',
+        comment: 'Nice Post. I like it',
+      },
+      {
+        title: 'You my favorite author',
+        comment: 'Nice Post. I like it',
+      },
+    ],
   },
 ]
 
@@ -59,6 +87,15 @@ const postsSlice = createSlice({
         }
       },
     },
+
+    commentAdded(state, action) {
+      const { title, comment, id } = action.payload
+      const existingPost = state.find((post) => post.id === id)
+      if (existingPost) {
+        existingPost.comments.push({ title, comment })
+      }
+    },
+
     reactionAdded(state, action) {
       const { postId, reaction } = action.payload
       const existingPost = state.find((post) => post.id === postId)
@@ -66,6 +103,7 @@ const postsSlice = createSlice({
         existingPost.reactions[reaction]++
       }
     },
+
     postUpdated(state, action) {
       const { id, title, content } = action.payload
       const existingPost = state.find((post) => post.id === id)
@@ -77,6 +115,11 @@ const postsSlice = createSlice({
   },
 })
 
-export const { postAdded, postUpdated, reactionAdded } = postsSlice.actions
+export const {
+  postAdded,
+  postUpdated,
+  reactionAdded,
+  commentAdded,
+} = postsSlice.actions
 
 export default postsSlice.reducer
