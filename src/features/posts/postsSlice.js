@@ -19,14 +19,17 @@ const initialState = [
       {
         title: 'You my favorite author',
         comment: 'Nice Post. I like it',
+        like: true,
       },
       {
         title: 'You my favorite author',
         comment: 'Nice Post. I like it',
+        like: true,
       },
       {
         title: 'You my favorite author',
         comment: 'Nice Post. I like it',
+        like: true,
       },
     ],
   },
@@ -47,14 +50,48 @@ const initialState = [
       {
         title: 'You my favorite author',
         comment: 'Nice Post. I like it',
+        like: true,
       },
       {
         title: 'You my favorite author',
         comment: 'Nice Post. I like it',
+        like: true,
       },
       {
         title: 'You my favorite author',
         comment: 'Nice Post. I like it',
+        like: true,
+      },
+    ],
+  },
+  {
+    id: '3',
+    title: 'Second Post',
+    content: 'More text',
+    user: '2',
+    date: sub(new Date(), { minutes: 5 }).toISOString(),
+    reactions: {
+      thumbsUp: 0,
+      hooray: 0,
+      heart: 0,
+      rocket: 0,
+      eyes: 0,
+    },
+    comments: [
+      {
+        title: 'You my favorite author',
+        comment: 'Nice Post. I like it',
+        like: true,
+      },
+      {
+        title: 'You my favorite author',
+        comment: 'Nice Post. I like it',
+        like: true,
+      },
+      {
+        title: 'You my favorite author',
+        comment: 'Nice Post. I like it',
+        like: true,
       },
     ],
   },
@@ -89,10 +126,10 @@ const postsSlice = createSlice({
     },
 
     commentAdded(state, action) {
-      const { title, comment, id } = action.payload
+      const { title, comment, id, like } = action.payload
       const existingPost = state.find((post) => post.id === id)
       if (existingPost) {
-        existingPost.comments.push({ title, comment })
+        existingPost.comments.push({ title, comment, like })
       }
     },
 

@@ -256,3 +256,13 @@ button.reaction-button {
 .notification.new {
   background-color: rgba(29, 161, 242, 0.1);
 }
+
+
+.comment-positive {
+  background-color: rgb(149, 228, 153);
+}
+
+.comment-negative {
+
+  background-color: rgb(223, 130, 130);
+}
